@@ -2,7 +2,7 @@
 <ul>
   <% @events.each do |event| %>
   <li><%= event.city %></li>
-  <li><%= event.place %></li>
+  <li><%= link_to event.place, event %></li>
   <li><%= event.start_date %></li>
   <li><%= event.end_date %></li>
 <% end %>

@@ -22,4 +22,4 @@ end
 
 # Add new gems here
 gem 'faker', '~> 1.6', '>= 1.6.3'
-
+gem 'devise', '~> 4.1', '>= 4.1.1'
