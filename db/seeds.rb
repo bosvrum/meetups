@@ -14,5 +14,10 @@ Event.destroy_all
                 end_date: Faker::Time.between(30.days.ago, Date.today, :all))
 end
 p "Created #{Event.count} events"
+User.destroy_all
 
-
+10.times do |index|
+  User.create!(email: Faker::Internet.email,
+               password: Faker::Internet.password  )
+end
+p "Created #{User.count} users"
