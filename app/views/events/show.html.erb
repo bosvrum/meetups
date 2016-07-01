@@ -8,4 +8,11 @@
 <%= render 'comments/form' %>
 <%= render 'comments/comment' %>
 
+<h3>Category</h3>
+<ul>
+  <% @categories.each do |category| %>
+    <li><%= category.name %></li>
+  <% end %>
+</ul>
+
 <%= link_to 'Back', events_path %>

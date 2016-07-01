@@ -7,6 +7,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @comments = Comment.where(event_id: @event).order("created_at DESC")
+    @categories = @event.categories
   end
 
   private
