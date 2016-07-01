@@ -21,3 +21,8 @@ User.destroy_all
                password: Faker::Internet.password  )
 end
 p "Created #{User.count} users"
+
+names = ["social", "ruby","rails"]
+names.each {|name| Category.create!(name:name)}
+
+User.create(email:'cata@example.com', password: 'password',admin: true)

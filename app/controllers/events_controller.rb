@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :require_admin, except: [:index, :show]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
     @events = Event.all
@@ -10,9 +12,43 @@ class EventsController < ApplicationController
     @categories = @event.categories
   end
 
+
+  def edit
+  end
+  
+  def update
+    if @event.update(event_params)
+      redirect_to @event, notice: "Event successfully updated!"
+    else
+      render :edit
+    end
+  end
+
+  def new
+    @event = Event.new
+  end
+  
+  def create
+    @event = Event.new(event_params)
+    if @event.save
+      redirect_to @event, notice: "Event successfully created!"
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    @event.destroy
+    redirect_to events_url, alert: "Event successfully deleted!"
+  end
+
   private
 
   def event_params
-    params.require(:event).permit(:place, :city, :start_date, :end_date)
+    params.require(:event).permit(:place, :city, :start_date, :end_date, :category_ids => [])
+  end
+
+  def set_event
+    @event = Event.find(params[:id])
   end
 end
