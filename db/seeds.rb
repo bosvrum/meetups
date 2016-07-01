@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Event.destroy_all
+
+10.times do |index|
+  Event.create!(place: Faker::Lorem.sentence(3, false, 0).chop,
+                city: Faker::Address.city,
+                start_date: Faker::Time.between(30.days.ago, Date.today, :all),
+                end_date: Faker::Time.between(30.days.ago, Date.today, :all))
+end
+p "Created #{Event.count} events"
+
+

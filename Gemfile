@@ -21,5 +21,5 @@ end
 
 
 # Add new gems here
-
+gem 'faker', '~> 1.6', '>= 1.6.3'
 
